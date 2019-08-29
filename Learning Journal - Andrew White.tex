@@ -17,6 +17,11 @@
 \begin{document}
 
 \maketitle
+
+\tableofcontents
+
+\newpage
+
 The purpose of this journal is to document the objective, action, errors and results of tasks set for the FOAR705 Unit. The Journal is being done in LeTeX, which will be a good learning exercise for myself, as someone who has never used LaTeX before. 
 
 \section{Week 1}
@@ -120,6 +125,7 @@ Example: Hyperlink opens in a new page.
 
 \noindent \textbf{Result:} Notes kept in Joplin for future reference. \\
 
+\newpage
 
 \section{Week 3}
 
@@ -218,22 +224,125 @@ I have neglected learning how to commit my journal in Overleaf to github automat
 
 \url{https://www.overleaf.com/learn/how-to/How_do_I_connect_an_Overleaf_project_with_a_repo_on_GitHub,_GitLab_or_BitBucket%3F}\\
 
+\subsection{Configure Overleaf to commit to github}
+
+\textbf{Objective:} Configure Overleaf to commit to github
+
+\textbf{Action:} Read info from Brain's post. From Menu in Overleaf, select github and create a repository. Select MQ-FOAR705 and create a repo called \verb|Andrew_White-Learning_Journal|. Commit changes to github
+
+\textbf{Errors:} I think I should have committed this to a sub-folder under a-white42-Exercises so that all my work is in a central file. 
+
+\textbf{Results:} My journal commited to github without any errors. I should ask Brian about moving the \verb|Andrew_White-Learning_Journal| folder.
 
 
 
+There are three steps to effective bibliography management:
 
+    Creating a .bib file.
+    Insert references into your .tex file.
+    Format your references.
 
 \newpage
 
-\subsection{Template Section}
+\subsection{Data Carpentry - The Unix Shell}
 
-\textbf{Objective:}
+\textbf{Objective} There is a 2 others ways to return to the home directory than cd or cd /home/andrew. typing cd \verb|~| (tilde) or cd \verb|$HOME| will also produce the same result. :
 
-\textbf{Action:}
+\textbf{Action:} tested commands. 
 
-\textbf{Errors:}
+\textbf{Errors:} No errors with the command however the tilde character is not displayed in the LaTeX PDF file. The solution is the add the verb command. 
 
-\textbf{Results:}
+\textbf{Results:} Commands work fine, and LaTeX processed correctly.
+
+
+\textbf{Objective} create a LaTeX document in the command line. 
+
+\textbf{Action:} make directory, change directory, make file, run vi, type in LaTeX code, exit and display code. 
+
+\begin{verbatim}
+[andrew@superman ~]$ mkdir thesis
+[andrew@superman ~]$ cd thesis
+[andrew@superman thesis]$ pwd
+/home/andrew/thesis
+[andrew@superman thesis]$ ls -l
+total 4
+-rw-rw-r--. 1 andrew andrew 0 Aug 29 14:09 thesis.tex
+[andrew@superman thesis]$ touch thesis.tex
+[andrew@superman thesis]$ vi thesis.tex 
+[andrew@superman thesis]$ ls -l
+total 4
+-rw-rw-r--. 1 andrew andrew 192 Aug 29 14:09 thesis.tex
+[andrew@superman thesis]$ cat thesis.tex
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+
+\title{test thesis}
+\author{Andrew White}
+\date{}
+
+\begin{document}
+
+\maketitile
+
+\section{section 1}
+
+This is a test document. 
+
+\end{document}
+\end{verbatim}
+
+run pdflatex thesis.pdf
+
+\textbf{Errors:} pdflatex returned the following error in the thesis.log file.
+
+\begin{verbatim}
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./thesis.tex
+LaTeX2e <2018-04-01> patch level 5
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+Runaway argument?
+{document 
+! Paragraph ended before \begin was complete.
+<to be read again> 
+                   \par 
+l.10 
+     
+? ^C! Interruption.
+l.10 
+\end{verbatim}
+The problem was I was missing a curly bracket. This is what happen when you type everything in manually. 
+
+\textbf{Results:} Fixed curly bracket and document generated thesis.pdf file correctly. 
+
+\textbf{Errors:} I initially used the \verb|\verbatim| and \verb|\endverbatim| commands but these returned errors. I fixed this with the \verb|\begin{verbatim} \end{verbatim}| command instead. 
+
+
+\subsection{LaTeX Error: hbox badness 10000}
+
+\textbf{Objective:} I keep getting this error in LaTeX:\\ 
+
+\verb|Underfull \hbox (badness 10000) in paragraph at lines 48--49|
+
+\textbf{Action:} Online I read that, An underfull hbox means LaTeX couldn't space the line wide enough to fill the entire width of the page, without increasing word spacing beyond the allowed maximum;
+
+One suggested fix is to include \verb|\hbadness=99999| in the preample because it is greater than 10000. 
+
+\textbf{Errors:} no errors when I added \verb|\hbadness=99999|
+
+\textbf{Results:} This seems like a patch for a problem that maybe shouldn't be there. It might something I have done and I should test the document to see if I can locate the source, or the correct way to set up the preample so this doesn't orrur. 
+
+
+%% \subsection{Template Section}
+%% \textbf{Objective:}
+%% \textbf{Action:}
+%% \textbf{Errors:}
+%% \textbf{Results:}
 
 
 \end{document}
