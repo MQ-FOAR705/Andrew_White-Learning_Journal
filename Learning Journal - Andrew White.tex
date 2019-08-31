@@ -338,6 +338,34 @@ One suggested fix is to include \verb|\hbadness=99999| in the preample because i
 \textbf{Results:} This seems like a patch for a problem that maybe shouldn't be there. It might something I have done and I should test the document to see if I can locate the source, or the correct way to set up the preample so this doesn't orrur. 
 
 
+
+\subsection{Data Carpentry - The Unix Shell 2}
+
+\textbf{Objective:} Creating aliases. Aliases let you define commands or shortcuts. For example, \textbf{alias lm="ls -al|more"} defines the alias command lm to run the ls command with arguments -a and -l and the more option to pause at the end of each page.
+
+\textbf{Action:} Test alias and add to .bashrc
+\begin{enumerate}
+    \item Start with the \textbf{alias} command
+    \item Type the name (shortcut) of the alias you want to create
+    \item Then an = sign, with no spaces on either side of the =
+    \item Then type the command (or commands) you want your alias to execute when it is run. 
+
+\end{enumerate}
+
+In a terminal,  run \textbf{alias lm="ls -al|more" } and test. Then edit .bashrc with the vi text editor and add alias lm="ls -al|more" under the section for \textit{User specific aliases and functions }so this alias is available every time I run a terminal window.  
+
+
+\textbf{Errors:} none.. 
+
+\textbf{Results:} Tested fine by running a new terminal window and confirmed.
+
+Just for fun, I set the allowing alias to open firefox in a new window at the url for overleaf.
+
+\verb|alias ol="firefox --new-window https://www.overleaf.com/project"|
+
+
+
+
 %% \subsection{Template Section}
 %% \textbf{Objective:}
 %% \textbf{Action:}
