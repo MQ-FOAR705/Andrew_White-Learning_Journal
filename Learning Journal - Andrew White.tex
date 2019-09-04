@@ -379,6 +379,120 @@ when working in Overleaf and you accidentally delete something, CTRL+z will undo
 
 Handy Hotkeys for overleaf \url{https://www.overleaf.com/learn/how-to/Hotkeys}
 
+\subsection{Data Carpentry - Unix Shell 3}
+
+\textbf{Objective:} Test out wc command 
+
+\textbf{Action:}
+
+\textbf{Errors:}
+
+\textbf{Results:}
+
+
+\subsection{Fedora 30 desktop}
+\textbf{Objective:} Install a dual boot fedora system on my desktop. The purpose of this exercise is to firstly, to set up a new system and document it and secondly, to test out some LaTeX commands such as subsubsection, url, and how to layout an instruction to setup a system in the future. \\
+
+\textbf{Action:} Install a typical installation of fedora from a usb image. 
+
+Post installation: These are things to do after installing Fedora. Commands will vary depending on the Linux distribution.  
+
+\subsubsection{Update System}   
+
+\verb|$ sudo dnf update|
+
+\subsubsection {Enable RPM Fusion Repositories}
+RPM fusion repertories homepage is \url{https://rpmfusion.org/} RPM Fusion provides software that the Fedora Project or Red Hat doesn't want to ship. That software is provided as precompiled RPMs for all current Fedora versions and current Red Hat Enterprise Linux or clones versions; you can use the RPM Fusion repositories with tools like yum and PackageKit.
+
+There are two repositories on rpm fusion, a free repository and a non-free repository. 
+
+\verb|$ sudo dnf update --refresh|
+
+\verb|$ sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm |
+
+\verb|$ sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm|
+
+\subsubsection{Player and Codecs}
+
+\verb|$ sudo dnf install youtube-dl vlc|
+
+\begin{verbatim}$ sudo dnf install \
+gstreamer-plugins-base \
+gstreamer1-plugins-base \
+gstreamer-plugins-bad \
+gstreamer-plugins-ugly \
+gstreamer1-plugins-ugly \
+gstreamer-plugins-good-extras \
+gstreamer1-plugins-good \
+gstreamer1-plugins-good-extras \
+gstreamer1-plugins-bad-freeworld \
+ffmpeg \
+gstreamer-ffmpeg
+\end{verbatim}
+
+\subsubsection{Gnome tweak tool}
+
+\verb|$ sudo dnf install gnome-tweak-tool|
+
+\subsubsection{Compression and archiever tools}
+
+\verb|$ sudo dnf install unzip p7zip|
+
+\subsubsection{Install vlc media player}
+
+\verb|$ sudo dnf -y install vlc|
+
+\subsubsection{Install Wunderlistux}
+
+Wunderlistux is a to-do list application. Project found at \url{https://github.com/edipox/wunderlistux}
+
+\verb|$ cd ~/Downloads|
+
+\verb|$ wget https://github.com/edipox/wunderlistux/releases/download/Linux-0.0.8/Wunderlistux-0.0.8.rpm|
+
+\verb|$ sudo dnf install Wunderlistux-0.0.8.rpm|
+
+\subsubsection{GNU Image Manipulation Program}
+
+Gimp image editing software. Project found at \url{https://www.gimp.org/}
+
+\verb|$ sudo dnf install gimp|
+
+\subsubsection{Stacer} 
+
+Stacer is a Linux System Optimizer and Monitoring tool. 
+
+Project is found on github at: 
+
+\url{https://oguzhaninan.github.io/Stacer-Web/} and  \url{https://github.com/oguzhaninan/Stacer}
+
+\verb|$ wget https://github.com/oguzhaninan/Stacer/releases/download/v1.0.8/stacer-1.0.8_x64.rpm|
+
+\verb|$ dnf install stacer-1.0.8_x64.rpm|
+
+\subsubsection{Shutter}
+
+Shutter is a feature-rich screenshot program. You can take a screenshot of a specific area, window, your whole screen, or even of a website - apply different effects to it, draw on it to highlight points, and then upload to an image hosting site, all within one window.
+
+\verb|$ sudo dnf -y install shutter|
+
+\subsubsection{R Programming Language and RStudio}
+
+\verb|$ sudo dnf install R|
+
+Download RStudio from the RStudio website
+
+\verb|$ sudo dnf install rstudio-1.2.1335-x86_64.rpm|
+
+\textbf{Errors:} An error worth noting. When downloading Stacer using wget, I accidentally run the sudo (superuser do) command so the rpm was downloaded and permissions assigned to the root account. 
+
+i.e.
+\begin{verbatim}
+[andrew@batman Downloads]$ ls st* -l
+-rw-r--r--. 1 root root 23926761 Aug 23  2017 stacer-1.0.8_x64.rpm
+\end{verbatim}
+
+\textbf{Results:} System up and running. Tested installed software and everything seems to work. 
 
 
 
