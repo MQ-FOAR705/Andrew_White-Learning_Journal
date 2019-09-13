@@ -1,11 +1,12 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{a4paper, total={160mm,257mm}, left=25mm, top=20mm}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1.0}
+\renewcommand{\baselinestretch}{1.15}
+
 
 \usepackage{array}
 \usepackage{verbatim}
@@ -13,6 +14,9 @@
 \title{Learning Journal}
 \author{Andrew White}
 \date{Semester 2 - 2019}
+
+
+
 
 \begin{document}
 
@@ -494,6 +498,130 @@ i.e.
 
 \textbf{Results:} System up and running. Tested installed software and everything seems to work. 
 
+\newpage
+
+\section{Week 7}
+
+\subsection{Open Refine}
+
+Open Refine is a standalone open source desktop application for data cleanup and transformation to other formats, the activity known as data wrangling. 
+
+terms: clustering, data wrangling, GREL (General Refine Expression Language).
+
+Problem: there might be a column where an entry is spelt 3 ways. 
+
+
+
+
+Proof of Concept
+
+As a [role], I want [goal] so that [reason].
+As a [masters student], I want [suitable word processor] so that [write my thesis].
+
+\subsection{Bibliography}
+
+\textbf{Objective:} Install bibliography in my learning journal so I an either reference weekly readings or record them for future reference. 
+
+\textbf{Action:} Created \verb|foar705_biblio.bib| Then copied in the BibTeX citation data for the 3 required readings for this week. Data was taken from the browzine interface for the nature articles and the \textbf{Art of Software Testing (3rd Edition)} taken from the digital source, Knovel website. 
+
+Added LaTeX commands to learning journal:
+\begin{verbatim}
+\newpage
+\nocite{*} 
+\bibliography{foar705_biblio.bib}
+\bibliographystyle{ieeetr}
+\end{verbatim}
+
+\textbf{Errors:} none. 
+
+\textbf{Results:} 
+
+\subsection{Art of Software Testing}
+
+The \textit{Art of Software Testing} describes a common approach to testing as involving a process of demonstrating if there are any errors present. There is a better approach, and this is to assume that there are errors and go fishing for them, establishing a proper goal. Therefore, a good definition of testing is: 
+
+\textbf{Testing is the process of executing a program with the intent of finding errors} \cite[p.6]{TomBadgett2011}
+
+A well constructed software test is successful if it finds errors. 
+
+
+\subsection{Referencing research}
+
+\textbf{Objective:} Select a citation style such as MLA and test my thesis documents to see if I can create any errors or undesirable referencing problems. 
+
+
+\textbf{Action:} Read MLA style guide for formatting a research paper found on the mla.org website. 
+
+\url{https://style.mla.org/mla-format/}
+
+\url{https://style.mla.org/formatting-papers/}
+
+biblatex-mla – MLA style files for BibLaTeX
+
+found at \url{https://ctan.org/pkg/biblatex-mla?lang=en}
+
+The manual fort biblatex is found here: 
+
+\url{http://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-mla/doc/biblatex-mla.pdf}
+
+\begin{verbatim}
+    Description:
+Biblatex-mla provides Biblatex support for references and citations in the
+style defined by the Modern Language Association (MLA). The style is a common
+standard for writers in the humanities and is outlined in the MLA Style Manual
+and the MLA Handbook for Writers of Research Papers. These files follow
+definitions for the 7th and 8th editions of the MLA Handbook.  Before using 
+biblatex-mla, you will need to install Biblatex. Biblatex is commonly 
+included with most installations of LaTeX, but it can also be found at 
+http://www.ctan.org/pkg/biblatex
+
+
+Manual Installation:
+1. Locate your latex installation folder
+	- In OS X, it can be found at 
+		~/Library/texmf/tex/latex/
+2. Create a new folder called "biblatex-mla" if there isn't already one there
+3. Place the biblatex-mla files into this folder
+
+
+Usage:
+1. Call the MLA style in your Latex document using the following four lines in
+your Latex preface:
+		\usepackage[american]{babel} 
+		\usepackage{csquotes} 
+		\usepackage[style=mla-new]{biblatex}
+		\addbibresource{<bibfile>}
+	- (replace "style=mla-new" with "style=mla" if you'd prefer to use the 
+	  style described in the old edition of the Handbook)
+	- (replace "<bibfile>" with the name of your .bib bibliography file)
+	- to use MLA-style footnotes, use the "autocite=footnote" package option
+2. Cite a text with \autocite{<key>}, cite a page with
+\autocite[<page>]{<key>}, and include a citational prenote---"'To be or not to
+be,' he wrote (Shakespeare qtd. in Brown 34)"---with
+\autocite[<prenote>][<page>]{<key>}.
+	- (replace <key>, <page>, and <prenote> with their respective elements)
+3. Before the end of your document, include the following line where you want
+your bibliography to appear:
+		\printbibliography
+\end{verbatim}
+
+To install and test biblatex-mla in Overleaf:
+
+\begin{enumerate}
+    \item Make a copy of thesis-testing overleaf project. 
+    \item Make a folder in LaTeX project and upload all biblatex-mla files
+    \item Added necessary preample code listed above into main.tex. 
+    \item Delete previous bibliography code from main.tex and replaced with \textbackslash printbibliography 
+    \item I left \textbackslash nocite{*} in main.tex to test if \textbackslash printbibliography would print all references and not just the ones cited.
+    \item changed \textbackslash cite\{\} entries to \textbackslash autocite\{\}
+    \item Recompile LaTeX document. 
+\end{enumerate}
+
+\textbf{Errors:} I had an error in the bib file due to  John Wiley \& Sons. Edited bib file and changed \& to \textbackslash \& 
+
+In-text references are listed in blue and link to the Cited Works at the bottom. While this is nice, I might want to change the text colour to black. 
+
+\textbf{Results:} biblatex-mla tested without any errors using basic citations. I will need to begin testing various options, such as multiple citations in a line, footnotes, and references other than book or articles such as websites, recordings, documentaries.  
 
 
 %% \subsection{Template Section}
@@ -502,5 +630,9 @@ i.e.
 %% \textbf{Errors:}
 %% \textbf{Results:}
 
+\newpage
+\nocite{*}
+\bibliography{foar705bib.bib}
+\bibliographystyle{apalike}
 
 \end{document}
