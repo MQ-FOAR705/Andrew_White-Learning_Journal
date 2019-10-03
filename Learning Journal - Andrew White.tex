@@ -624,6 +624,66 @@ In-text references are listed in blue and link to the Cited Works at the bottom.
 \textbf{Results:} biblatex-mla tested without any errors using basic citations. I will need to begin testing various options, such as multiple citations in a line, footnotes, and references other than book or articles such as websites, recordings, documentaries.  
 
 
+\subsection{Backups}
+
+\textbf{Objective:} 
+
+Duplicati is a backup client that securely stores encrypted, incremental, compressed backups on local storage, cloud storage services and remote file servers. Duplicati began in 2008 as a GUI for Duplicity, a command line suite of backup software. In 2012 work on Duplicati 2 started and this was a complete rewrite of the software. 
+
+\textbf{Action:} Download Duplicati and run.
+
+\url{https://www.duplicati.com/download}
+
+\begin{verbatim}
+sudo dnf install duplicati-2.0.4.23-2.0.4.23_beta_20190714.noarch.rpm
+
+Results
+
+Installed:
+  duplicati-2.0.4.23-2.0.4.23_beta_20190714.noarch                              
+  mono-core-5.18.1-7.fc30.x86_64                                                
+  mono-data-5.18.1-7.fc30.x86_64                                                
+  mono-data-sqlite-5.18.1-7.fc30.x86_64                                         
+  mono-extras-5.18.1-7.fc30.x86_64                                              
+  mono-mvc-5.18.1-7.fc30.x86_64                                                 
+  mono-wcf-5.18.1-7.fc30.x86_64                                                 
+  mono-web-5.18.1-7.fc30.x86_64                                                 
+  mono-winforms-5.18.1-7.fc30.x86_64                                            
+  gtk-sharp2-2.12.45-6.fc30.x86_64                                              
+  libappindicator-sharp-12.10.0-24.fc30.x86_64                                  
+  libgdiplus-5.6-3.fc30.x86_64   
+  
+\end{verbatim}
+
+I tested backing up my local university folder to an external hard drive. 
+
+\textbf{Errors:} no errors. 
+
+\textbf{Results:} Successful. Next, I will test backing up to dropbox. 
+
+Backup to dropbox
+
+Path on Server: \verb|dropbox://foar705_backup|
+
+The authorization code.
+The authorization token retrieved from
+
+\url{https://duplicati-oauth-handler.appspot.com?type=dropbox}
+
+\textbf{Errors:} Testing dropbox connection returned the following error.
+
+Failed to connect: Error reading JObject from JsonReader. Path '', line 0, position 0. 
+
+Solution:
+
+Selected accept-any-ssl-certificate
+
+Changed path to \verb|foar705_backup| This creates a folder on dropbox called 
+
+\verb|//Apps/Duplicati Backup/foar705_backup|
+
+Connection tested okay. 
+
 %% \subsection{Template Section}
 %% \textbf{Objective:}
 %% \textbf{Action:}
