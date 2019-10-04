@@ -510,10 +510,36 @@ terms: clustering, data wrangling, GREL (General Refine Expression Language).
 
 Problem: there might be a column where an entry is spelt 3 ways. 
 
+\subsection{Open Refine Import testing}
 
 
+%% \textbf{Action:}
+%% \textbf{Errors:}
+%% \textbf{Results:}
 
-Proof of Concept
+\textbf{Objective:} Import ILO time-related underemployment data into OpenRefine and export only Australian data for the 15-24 year old age group. 
+
+\textbf{Action:} 
+
+Download time-related underemployment data from the International Labour Organization.
+
+Open new project in OpenRefine
+
+Load \verb|MBI_18_EN,xlsx|
+
+The spreadsheet contains 4472 entries (rows). From the column listed as time-related-underemployment select text filter and type in Australia. The spread sheet filters out all entries expect the 76 entries for Australia.  
+
+Next add text facet to column 3 and select only the 15-24 age groups.
+
+Export to CSV file and open in Libre Office. 
+
+\textbf{Errors:} None.
+
+\textbf{Results:}
+
+The CSV file now contains only the data for time-related-unemployment in Australia for the 15-24 year old age group.
+
+\subsection{Proof of Concept Notes}
 
 As a [role], I want [goal] so that [reason].
 As a [masters student], I want [suitable word processor] so that [write my thesis].
@@ -682,7 +708,157 @@ Changed path to \verb|foar705_backup| This creates a folder on dropbox called
 
 \verb|//Apps/Duplicati Backup/foar705_backup|
 
-Connection tested okay. 
+Connection tested okay. Run backup and backups are in the specified folder.
+
+\subsection{Proof of Concept Design}
+
+\subsubsection {User Stories}
+
+%% 
+%% As a [user role], I want [some goal], so that [some reason]
+
+1. As a student I want a typesetting software so that I can complete my thesis writing.\\
+
+2. As a student I want to create a document template that I can use to write my thesis.\\
+
+3. As a student I want the thesis document and writing software to be accessible from multiple locations/computers.\\ 
+
+4. As I student I want the thesis document to be flexible so if I need to change formatting this is a painless process.\\
+
+5. As a student I want to be able to change by bibliography style automatically so that I do not have to re-type all my references.\\\textbf{}
+
+6. As a student I want a typesetting software create a bibliography that can be easily managed and updated.\\
+
+7. As a student I want a typesetting software create a bibliography that links into my document so that I can automatically generate a reference list for all citations.\\
+
+8. As a student I want an annotated bibliography so that I can record all of my research notes for each source.\\
+
+
+9. As a student I want to be able to save my work in a reliable method so I do not lose any files.  
+
+10. As a student I want to be able to keep track of document versions so that I can retrieve previous versions or have access to previously discarded material.\\ 
+
+
+
+
+
+\subsubsection {Themes and Categories}
+
+1. User  stories  1 to 4  are  concerned with the actual thesis document. An appropriate typesetting system and document template needs to be decided and setup before steps 6 to 8 enter the picture. Although, consideration needs to be given to the integration between the bibliography and the thesis document.\\ 
+
+2. User stories 5 to 7 are concerned with the bibliography. Using an annotated bibliography not only ensures that sources are referenced correctly but provided a central location where I can record relevant research information for each source.\\ 
+
+3. User story 8 to 9 is about the backing up and version control. These two steps could be done independently or combined. This stage will occur after the templates and details of steps 1-7 are finalized but before the research begins.\\     
+
+\subsubsection{Acceptance Criteria}
+
+
+\begin{itemize}
+
+\item As a student, I want to create a template for my thesis in LaTeX. 
+
+\begin{enumerate}
+
+\item Create LaTeX template using Overleaf. 
+
+\item Add chapters, sections, subsections, dummy text, and sample citations.
+
+\item Add code for table of contents
+
+\item Generate document in PDF format.
+
+\end{enumerate}
+
+\item As a student, I should be able to change citation format in my thesis document:
+
+\begin{enumerate}
+
+\item Open thesis document. 
+
+\item  Change formatting reference style code found at \verb|\bibliographystyle{ieeetr}| to say apalike \verb|\bibliographystyle{apalike}| 
+
+\item  Generate pdf file
+
+\end{enumerate}
+
+\item As a student, I should be able to add a citation to my thesis document:
+
+\begin{enumerate}
+
+\item Open thesis document. 
+
+\item  Add in-text citation from a list generated from my bibliography by typing \verb|\cite{}|
+
+\item  Insert BibTeX pre-formatted reference code into the appropriate section
+
+\item  Generate up-to-date Bibliography in PDF format.
+
+\end{enumerate}
+
+\item As a student, I want to add an existing BibTeX code reference to my bibliography by:
+
+\begin{enumerate}
+
+\item Copy BibTeX formatted reference (BibTeX code is found in library databases)
+
+\item Opening bibliography file.
+
+\item Insert BibTeX pre-formatted reference code into the appropriate section
+
+\item Generate up-to-date Bibliography in PDF format.
+
+\end{enumerate}
+
+\item As a student, I want to add a new BibTeX reference to my bibliography by:
+
+\begin{enumerate}
+
+\item Opening bibliography file.
+
+\item Copy BibTeX entry code from template commented out in bibliography file header. 
+
+\item Manually enter BibTex reference information 
+
+\item Generate up-to-date Bibliography in PDF format.
+
+\end{enumerate}
+
+\item As a student, I want to add annotation to my bibliography by:
+
+\begin{enumerate}
+
+\item Opening bibliography file.
+
+\item Selecting reference.
+
+\item Added annotation to the appropriate section.
+
+\item Generate up-to-date Annotated Bibliography in PDF format.
+
+\item As a student, I want to a retrieve a file:
+
+\end{enumerate}
+
+\item As a student, I want to restore a backup:
+
+\begin{enumerate}
+
+\item Open Duplicati.
+
+\item Select restore.
+
+\item Find document I want to restore
+
+\item Restore backup
+
+\end{enumerate}
+
+\end{itemize}
+
+\subsubsection{Quality Assurance}
+
+These methods and templates need to be tested to confirm that they work and are acceptable. It is important, however, as discussed in Glenford J. Myers \textit{The Art of Software Testing} that testing is not just about running a program to see if it works, but a process where one should actively try to find errors, or break the system. The assumption is that all programs contain errors. In my case, I should test my documents by imagining things I want to do change and see if these produce any errros. For example, I might want to change not just the bibliography style by using the built in switches, \textbf{ieeetr} to \textbf{apalike} but change something about the way these styles are formatted or create my own style for MPA referencing.  
+
 
 %% \subsection{Template Section}
 %% \textbf{Objective:}
