@@ -7,14 +7,21 @@
 \setlength{\parskip}{1em}
 \renewcommand{\baselinestretch}{1.15}
 
+\usepackage{xcolor}
 
 \usepackage{array}
+
 \usepackage{verbatim}
+
+\usepackage{listings}
+\lstset{breaklines=true}
+
+
 \usepackage{hyperref}
+
 \title{Learning Journal}
 \author{Andrew White}
 \date{Semester 2 - 2019}
-
 
 
 
@@ -510,7 +517,7 @@ terms: clustering, data wrangling, GREL (General Refine Expression Language).
 
 Problem: there might be a column where an entry is spelt 3 ways. 
 
-\subsection{Open Refine Import testing}
+\subsection{Open Refine Import and Filtering and Sorting}
 
 
 %% \textbf{Action:}
@@ -539,6 +546,22 @@ Export to CSV file and open in Libre Office.
 
 The CSV file now contains only the data for time-related-unemployment in Australia for the 15-24 year old age group.
 
+\subsection{Examining Numbers in OpenRefine}
+
+\textbf{Objective:} Transform three more columns, from text to numbers. Can all columns be transformed to numbers? 
+
+\textbf{Action:} Select Edit Cell, Common Transforms and then To number for each column.  
+
+Columns with number data can be transformed to a number. Columns with text data, such as \verb|respondent_wall_type| or village cannot be transformted to numbers.
+
+\textbf{Errors:}  Text transform on 0 cells in column village: value.toNumber() Undo 
+
+\textbf{Results:} Only the data in the columns containing numbers was transformed. 
+
+\textbf{Action:} Replaced one numeric cell on the years farmed column with the text abc. Select numeric facet from the pull down menu. On the left panel there are several check boxes Numeric, Non-numeric, Blank, and Error. There are 130 enrties for numeric and only 1 entry for non-numeric. De-selecting the tick box for the non-numeric option turns off the corresponding row. 
+
+\textbf{Results:} Now the selection contains only the rows that contain numbers in the years farmed column. 
+
 \subsection{Proof of Concept Notes}
 
 As a [role], I want [goal] so that [reason].
@@ -551,6 +574,7 @@ As a [masters student], I want [suitable word processor] so that [write my thesi
 \textbf{Action:} Created \verb|foar705_biblio.bib| Then copied in the BibTeX citation data for the 3 required readings for this week. Data was taken from the browzine interface for the nature articles and the \textbf{Art of Software Testing (3rd Edition)} taken from the digital source, Knovel website. 
 
 Added LaTeX commands to learning journal:
+
 \begin{verbatim}
 \newpage
 \nocite{*} 
@@ -858,6 +882,368 @@ Connection tested okay. Run backup and backups are in the specified folder.
 \subsubsection{Quality Assurance}
 
 These methods and templates need to be tested to confirm that they work and are acceptable. It is important, however, as discussed in Glenford J. Myers \textit{The Art of Software Testing} that testing is not just about running a program to see if it works, but a process where one should actively try to find errors, or break the system. The assumption is that all programs contain errors. In my case, I should test my documents by imagining things I want to do change and see if these produce any errros. For example, I might want to change not just the bibliography style by using the built in switches, \textbf{ieeetr} to \textbf{apalike} but change something about the way these styles are formatted or create my own style for MPA referencing.  
+
+\subsection{Proof of Concept testing} 
+
+\textbf{Objective:} I want to be able to notate my annotated bibliography with red text so I can record important research questions, problems, record supervisor comments, or notes for further research. 
+
+\textbf{Action:} Test that I can add colour to my annotated bibliography. 
+
+Add some same text using the command \verb|\textcolor{red}{}| to the annote section of the bib file.
+
+\textcolor{red}{This is a sample of red text.}
+
+\textbf{\textcolor{red}{This is a sample of bold red text.}}  
+
+\textit{\textcolor{red}{This is a sample of italic red text.}}  
+
+\textbf{Errors:} This didn't work initially because I needed to load \verb|\usepackage{xcolor}| 
+
+\textbf{Results:} The red text works and it is one option to consider for managing my workflow by flagging key information, questions, supervisor comments or problems to address. 
+
+\subsection{Proof of Concept Bibliography testing}
+\textbf{Objective:} In Overleaf I have two main projects I have testing. The template thesis document and the annotated bibliography. Up until now I have been copying the annotated bibliography code into the biblio.bib file in the thesis template document. However, it would be better if I would somehow link the annot.bib file to the thesis template document so that I only update one  bibliography. 
+
+\textbf{Action:}  From within the thesis template project, select New File, then select From Another Project. Choose \verb|Annotated_Bibliography| from the Select a Project and choose annot.bib from the Select a File. Save as annot.bib.
+
+\textbf{Errors:} None. 
+
+\textbf{Results:} Annotated Biblography is now linked to my thesis template. 
+
+\textbf{testing:} Open project \verb|Annotated_Bibliography| and make a new entry. Add Byung-Chul Han Topology of Violence. Open \verb|Thesis_Template| and check that new reference is listed.
+
+\textbf{Errors:} Initially the new entry did not show up, but all I needed to do is selected the refresh button and reload the new annot.bib file. 
+
+\newpage
+
+\section{Week 8}
+
+\subsection{Week 8 Notes}
+
+R is an IDE (Integrated Development Environment) 
+R is a programming language
+RStudio is a set of tools to work with R. 
+
+RStudio working directory. getwd() command
+
+\verb|dir.create("data_output")|
+
+
+\subsection{Testing user story 3, working offline)}
+
+USER STORY 3: As a student I want the thesis document and writing software to be accessible from multiple locations/computers.
+
+"Overleaf v2 introduces an automatic two-way sync between Overleaf and Dropbox. Any changes to your project in Overleaf will automatically sync to your Dropbox folder on your computer, and any changes you make locally in Dropbox will appear in your project online." \url{https://www.overleaf.com/learn/how-to/Working_Offline_in_Overleaf}
+
+\textbf{Objective:} Link Overleaf to my Dropbox account
+
+\textbf{Action:} In Overleaf thesis project, go to menu. Select Dropbox and authorize. All projects in Overleaf will now sync with dropbox folder ../Apps/Overleaf
+
+\textbf{Errors:} checked local dropbox folder on Fedora and all files have synchronized. 
+
+\textbf{Testing:} Edit local document ../Dropbox/Apps/Overleaf/Thesis/main.tex using the Texmaker application and add some comments. Save and test if this is updated in Overleaf. 
+
+Trying to break dropbox sync. Can I create a new project locally and does Overleaf recognize it. 
+
+In a terminal window on local machine: 
+\begin{verbatim}
+$ cd ../Dropbox/Apps/Overleaf
+$ mkdir dropbox_test_project
+$ cd dropbox_test_project/
+$ touch main.tex
+\end{verbatim}
+
+Go to overleaf and check if there is a new project called \verb|dropbox_test_project|
+
+Success. \verb|dropbox_test_project| exists and inside is a file called main.tex
+
+\textbf{Results:} Successfully linked Overleaf to Dropbox. Tested by opening editing local document and checking if changes were reflected in Overloaf. This has resulted in some options to consider. I currently backup my dropbox to an external hard drive. This means my work in Overleaf will now be backed up with the other files on dropbox. The next thing to do is to test github. This would provide a backup but also version control. Finally, one of the benefits of dropbox since recent addition of dropbox integration (see \url{https://www.dropbox.com/install-linux} to Fedora and ubuntu, is the flexibility to work offline. while it is not absolutely essential, The internet does go out occasional for up to a day, and I do find myself from time to time in places without internet access. The flexibility to access and work on my files, and have them update online at a later date, is a worthwhile feature.        
+
+
+\subsection{LaTeX Proof of Concept}
+
+\textbf{Objective:} Research into how to setup a LaTeX thesis template and expand on previously gained knowledge. In this process I will setup a template and include detailed notes in the LaTeX document explaining what every command does and in many cases the syntax of the commands. I will also setup a structure with folders for each chapter of the document to make it easier to manage. In the main LaTeX file I will include an Abstract, Dedication, Declaration, and Acknowledgments. 
+
+\textbf{Action:} Work through every LaTeX command and make notes. 
+
+\textbf{Errors:} None. 
+
+\textbf{Results:} Completed document side of Proof of Concept. Next, document bibtex. 
+
+\section{Week 9}
+
+\subsection{RStudio data carpentry exercises}
+
+In RStudio a function like X <- 3 assigns to the object X the value of 3. 
+
+The shortcut for \verb|<-| ALT + -'
+
+\textbf{Functions and Arguments}
+
+round(3.14159)
+
+round(3.14159, digits = 2) This rounds off 3.14159 to 2 digits
+
+In RStudio putting a ? in front of a command brings up the help for that command. For example, ?round bring up the help for round command
+
+\textbf{Vectors and data types}
+
+Numeric, numbers
+
+Character, text
+
+logical for TRUE and FALSE (the boolean data type)
+
+integer for integer numbers e.g., 2L, the L indicates to R that it’s an integer
+
+complex to represent complex numbers with real and imaginary parts e.g., 1 + 4i and that’s all we’re going to say about them
+
+raw for bitstreams that we won’t discuss further
+
+\verb|tricky <- c(1, 2, 3, "4")|\
+
+class = character
+
+R tries to convert the class tricky to the common denominator. Since "4" cannot be a number it covert all the characters. 
+ 
+\textbf{Subsetting vectors}
+
+ 
+\begin{lstlisting}
+> 3 + 5
+[1] 8
+> 12 / 7
+[1] 1.714286
+> area_hectares <- 1.0
+> x <- 3
+> (area_hectares <- 1)
+[1] 1
+> area_hectares * 3
+[1] 3
+> area_hectares <- 2.5
+> area_hectares * 3
+[1] 7.5
+> area_acres <- 2.47 * area_hectares
+> area_hectares <- 50
+> area_hectares <- 50			# land area in hectares
+> area_acres				# print land area in acres.
+[1] 6.175
+> length <- 100
+> width <- 33
+> area <- length * width
+> area
+[1] 3300.
+> length <- 7.5
+> width <- 6.5
+> b <- sqrt(a)
+Error: object 'a' not found
+> round(3.14159)\begin{lstlisting}
+[1] 3
+> args(round)
+function (x, digits = 0) 
+NULL
+> round(3.14159, digits = 2) # round off 3.14159 to 2 digits
+[1] 3.14
+> ?round
+> hh_members <- c(3, 7, 10, 6)
+> hh_members.
+[1]  3  7 10  6
+> respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
+> redpondent_wall_type
+Error: object 'redpondent_wall_type' not found
+> respondent_wall_type
+[1] "muddaub"     "burntbricks" "sunbricks"  
+> length(hh_members) # tells use how many elements are in the vector hh_members
+[1] 4
+> length(respondent_wall_type)
+[1] 3
+> class(hh_members) # This tells us the data type of the vector hh_members e.g. numeric or character
+[1] "numeric"
+> class(respondent_wall_type)
+[1] "character"
+> str(hh_members) # This is an overview of the structure of an object and its elements
+ num [1:4] 3 7 10 6.
+> str(respondent_wall_type)
+ chr [1:3] "muddaub" "burntbricks" "sunbricks"
+> possessions <- c("bicycle", "radio", "television")
+> possessions <- c(possessions, "mobile_phone") # This adds mobile_phone to the possessions vector
+> possessions
+[1] "bicycle"      "radio"        "television"   "mobile_phone"
+> possessions <- c("car", possessions) # the above added mobile_phone to the end of the vector, and this adds car to the begining.
+> possessions
+[1] "car"          "bicycle"      "radio"        "television"   "mobile_phone"
+> num_char <- c(1, 2, 3, "a")
+> num_char
+[1] "1" "2" "3" "a".
+> class num_char
+Error: unexpected symbol in "class num_char"
+> class(num_char).
+[1] "character"
+> num_logical <- c(1, 2, 3, TRUE)
+> class(num_logical)
+[1] "numeric"
+> char_logical <- c("a", "b", "c", TRUE)
+> class(char_log.ical)
+[1] "character"
+> tricky <- c(1, 2, 3., "4")
+> class(tricky)
+[1] "character"
+> num_logical <- c(1, 2, 3, TRUE)
+> char_logical <- c("a", "b", "c", TRUE)
+> combined_logical <- c(num_logical, char_logical)
+> class(char_logical)
+[1] "character"
+> class(combined_lo.gical)
+[1] "character".
+> respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
+> respondent_wall_type[2]
+[1] "burntbricks."
+> 
+\end{lstlisting}
+ 
+ 
+ \newpage
+ 
+\section{Week 10}
+
+\subsection{lstlisting and breaking lines in verbatium text}
+
+\textbf{Objective:} Break lines in verbatium text. For a long time I have been trying to figure out how to break lines, or word wrap, verbatium text. I have tried a number of suggested methods including leading packages like 
+
+\textbf{Action:} I added package listings which is designed to display code in latex. The command \\ 
+\verb|\lstset{breaklines=true}| \\ 
+needs to be added in the preample for this to work properly.
+
+\begin{verbatim}
+    
+\documentclass{report}
+
+\usepackage{listings}
+\lstset{breaklines=true} 
+
+\begin{document}
+
+\begin{lstlisting}
+some text here
+\end{lstlisting}
+
+\end{document}
+
+\end{verbatim}
+
+\textbf{Errors:} I did have an initial error, the listings usepackage didn't work. However, after adding the breaklines=true variable it worked.
+
+\textbf{Results:} I can now add code examples without teh text going off the page.
+
+
+\subsection{RStudio data carpentry - Starting with Data}
+
+\section{Week 12}
+
+\subsection{Disaster recovery information}
+
+Disaster recovery information is confined to my thesis proper documents and associated files (such as notes, ebooks, papers in pdf format etc.)
+
+\subsubsection{Github}
+
+All of the files for the Proof Of Concept Thesis template are done in Overleaf and are committed to github
+\url{https://github.com/a-white42/ProofOfConcept_Thesis_Paper}. This serves the purpose of having tracking in terms of version control and for the purposes of backup in case of an unforeseen disaster in which Overleaf is hacked or stops working. As an addition backup and offline functionality Overleaf is configured to sync with my Dropbox account both as a secondary backup, but also as a means of working offline in a local LaTeX editor in case of internet outage. The Dropbox sync folder is \verb|\Apps\Overleaf\| To work offline, you only need to edit the required document in any LaTeX editor, or any plain text editor (Atom is a good open source text editor, found at \url{https://atom.io/} and when the local Dropbox syncs the Dropbox server the files will automatically sync with Overleaf.   
+
+\subsubsection{Dupliciti}
+
+Secondly, I have Duplicati installed, when I used to backup my other work documents, and this is set to back up all the data located in my Dropbox folder to a an external hard drive and a local hard drive. I backup the Dropbox on a local hard drive just in case the contents of Dropbox is compromised. For example, let as same a hacker deletes files on a local Dropbox and it syncs to all Dropbox drives. All local and online files would have been removed. By having both an external hard drive version and a local version means we can plan for either a hacker or a damaged/lost computer.  
+
+\subsection{In case of disaster: Loss of file, or corruption}
+In the worst case of file corruption or a file has gone missing there are several courses of action one could take. 
+Both github and Overleaf provides a method of recovering an older files through the version control/history facility.
+
+\subsubsection{Overleaf}
+
+\begin{enumerate}
+    \item Select the project in which a file is missing, corrupted, or that you might want to go back to an earlier version.
+    \item Select the History tab at the top right of the web interface.
+    \item Scroll down until you find the correct file. (you can check by clicking on files to see what the content was on a particular date.)
+    \item Select the "download project at this version"
+    \item Unzip the file and check the content of the desired file. 
+    \item From here we can either copy and paste content into the current online version or upload this file to over-write the current online version.
+    
+\end{enumerate}
+
+
+\subsubsection{GitHub}
+\begin{enumerate}
+    \item go to \url{https://github.com/a-white42/ProofOfConcept_Thesis_Paper}
+    \item Select file you want
+    \item Select History
+    \item You are then presented with a list of every time the file has been committed to github. This emphasises the importance of committing your project regularly.
+    \item From here you can search for the older version you might want, or for some text you might want to copy into a newer version. 
+    
+\end{enumerate}
+
+\subsubsection{Duplicati}
+\begin{enumerate}
+    \item Open Duplicati
+    \item Select restore backup
+    \item Select backup to restore or search
+    \item Restore files
+    
+\end{enumerate}
+
+Recovering large quantities of files is beyond the scope of this plan as it involves a lot of time and detail. Duplicati has a disaster recovery page specifically for recovering large numbers of files. 
+\url{https://duplicati.readthedocs.io/en/latest/08-disaster-recovery/}
+
+\subsubsection{Overleaf}
+Recovering complete project in Overleaf from github. The Thesis Project can be imported into Overleaf, is a worse case scenario where the overleaf project has been deleted or hacked. 
+\begin{enumerate}
+    \item From the https://www.overleaf.com/project page select 'New Project'
+    \item Choose import from github
+    \item Select appropriate project (for example, ProofOfConceptThesisPaper)
+
+    
+\end{enumerate}
+
+\subsubsection{In case of disaster: New Computer required}
+\begin{enumerate}
+    \item Install Linux Fedora found at https://getfedora.org/
+    
+    - boot cd or usb
+    
+    - partition hard drive or use VLM
+    
+    - Follow installation prompts
+    
+    - reboot system after install (10-15 mins)
+    
+    \item install Dropbox, instructions found at \url{https://www.dropbox.com/install-linux}
+    \item Sync Dropbox (this will restore all data from the Dropbox online server)
+    \item Update system using \verb|$ sudo dnf update|
+    \item Install Firefox (login to enable synchronize bookmarks and history)
+    \item Download and install Duplicati for Fedora \url{https://www.duplicati.com/download}
+    
+    - Install mono for fedora. Mono is an open source implementation of the Microsoft .NET framework. 
+    
+    - \verb|$ sudo dnf install mono-complete|
+    
+    - \verb|$ sudo dnf install [name of duplicati file].rpm|
+    
+    \item install additional software:
+    
+    - \verb|$ sudo dnf install R|
+    
+    - \verb|$ sudo dnf install texlive|
+    
+    - \verb|$ sudo dnf install texlive-biblatex|
+    
+    - \verb|$ sudo dnf install texmaker|
+    
+    - \verb|$ sudo dnf install gnome-tweak-tool|
+    
+    
+    \item Login to GitHub and get new computer verification code.
+    
+\end{enumerate}
+
+
 
 
 %% \subsection{Template Section}
