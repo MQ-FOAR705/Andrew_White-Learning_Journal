@@ -1136,7 +1136,6 @@ some text here
 \textbf{Results:} I can now add code examples without teh text going off the page.
 
 
-\subsection{RStudio data carpentry - Starting with Data}
 
 \section{Week 12}
 
@@ -1243,7 +1242,46 @@ Recovering complete project in Overleaf from github. The Thesis Project can be i
     
 \end{enumerate}
 
+\newpage
 
+\section{Week 12}
+
+\subsection{Fancyhdr in Proof Of Concept}
+
+\textbf{Errors:} The Fancyhdr LaTEX package is printing Chapter 0 on the frontmatter pages of my thesis--on the abstract, declaration,  dedication, and acknowledgement pages. The references to chapters should not begin until chapter 1. 
+
+\textbf{Objective:} Find some code to tell LaTeX not to print chapter 0 in the frantmatter.
+
+\textbf{Action:} Searching the internet forums I found a few solutions but the simplest one was to add some code which tells LaTeX only to print the chapter number if it is greater than 0. This code was added to the preample section where I have included the fancyhdr settings. 
+
+\verb|\fancyfoot[LO,CE]{\ifnum \value{chapter}>0 Chapter \thechapter\fi}| 
+
+\textbf{Results:} This was successful and the PDF file complied without chapter 0 printing in the frontmatter. 
+
+\subsection{Annotated Bibliography}
+
+After a lot of revisiting the annotated bibliography and experimenting with some pre-made code, I have returned to a fairly straightforward set up. 
+
+This is the code I am now using in the annotate.tex file in my Proof Of Concept. It reference the same biblatex file as the main thesis document, however, it calls the \verb|annote={}| field and prints this in the \verb|\printbibliography[]|
+
+\begin{verbatim}
+\usepackage[notes,backend=biber,isbn=false,annotation]{biblatex-chicago}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+\maketitle
+
+\nocite{*}
+
+\setlength{\bibitemsep}{1.6\itemsep} 
+
+\nocite{*} 
+
+\printbibliography[title={References}] 
+
+\end{verbatim}
 
 
 %% \subsection{Template Section}
