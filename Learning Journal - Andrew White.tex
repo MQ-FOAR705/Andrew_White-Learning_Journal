@@ -1284,6 +1284,16 @@ This is the code I am now using in the annotate.tex file in my Proof Of Concept.
 \end{verbatim}
 
 
+\subsection{Proof Of Concept Testing}
+
+\textbf{Objective:} Test changing document paper sizes. Options, a4paper, executivepaper, legalpaper, a5paper. 
+
+\textbf{Action:} In the preample of the thesis document, change the paper size setting, currently set at a4paper, \verb|\usepackage[a4paper, top=25mm, bottom=25mm, bindingoffset=5mm, marginparwidth=2.5cm]{geometry}|, to a4paper, executivepaper, legalpaper, and a5paper. Generate a pdf file of each options and check results.   
+
+\textbf{Results:}  a4paper, executivepaper and legalpaper paper sizes generated satisfactorily and the results have been uploaded to the Testing folder on Overleaf and GitHub.
+
+\textbf{Errors:} a5paper created an error due to the paper size width OF a5 paper, which is 148 × 210, and the specified width of the text, which is set to 140mm. This only allows 8mm of play, 4mm on each side. I removed the 140mm text width and this fixed the problem. 
+
 %% \subsection{Template Section}
 %% \textbf{Objective:}
 %% \textbf{Action:}
